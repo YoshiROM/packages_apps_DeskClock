@@ -23,11 +23,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 
-import com.android.deskclock.AlarmClockFragment;
-import com.android.deskclock.AlarmUtils;
-import com.android.deskclock.DeskClock;
-import com.android.deskclock.LogUtils;
-import com.android.deskclock.R;
+import android.preference.PreferenceManager;
+import com.android.deskclock.*;
 import com.android.deskclock.provider.Alarm;
 import com.android.deskclock.provider.AlarmInstance;
 
@@ -110,7 +107,7 @@ public final class AlarmNotifications {
                 .setContentTitle(resources.getString(R.string.alarm_alert_predismiss_title))
                 .setContentText(AlarmUtils.getAlarmText(context, instance))
                 .setSmallIcon(R.drawable.stat_notify_alarm)
-                .setOngoing(true)
+                .setOngoing(allowOngoingNotifications(context))
                 .setAutoCancel(false)
                 .setPriority(Notification.PRIORITY_HIGH)
                 .setCategory(Notification.CATEGORY_ALARM)
@@ -145,7 +142,7 @@ public final class AlarmNotifications {
                 .setContentText(resources.getString(R.string.alarm_alert_snooze_until,
                         AlarmUtils.getFormattedTime(context, instance.getAlarmTime())))
                 .setSmallIcon(R.drawable.stat_notify_alarm)
-                .setOngoing(true)
+                .setOngoing(allowOngoingNotifications(context))
                 .setAutoCancel(false)
                 .setPriority(Notification.PRIORITY_MAX)
                 .setCategory(Notification.CATEGORY_ALARM)
@@ -277,5 +274,10 @@ public final class AlarmNotifications {
         viewAlarmIntent.putExtra(AlarmClockFragment.SCROLL_TO_ALARM_INTENT_EXTRA, alarmId);
         viewAlarmIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return viewAlarmIntent;
+    }
+
+    private static boolean allowOngoingNotifications(Context context) {
+        return !PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean(SettingsActivity.KEY_NOTIFICATION_NEVER_ONGOING, false);
     }
 }

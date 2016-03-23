@@ -66,4 +66,13 @@
             android:entryValues="@array/volume_button_setting_values"
             android:defaultValue="0" />
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/notifications_title">
+        <CheckBoxPreference
+            android:key="notification_never_ongoing"
+            android:title="@string/notification_never_ongoing_title"
+            android:summary="@string/notification_never_ongoing_summary"
+            android:defaultValue="false" />
+    </PreferenceCategory>
 </PreferenceScreen>

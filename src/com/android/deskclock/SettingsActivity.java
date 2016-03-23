@@ -56,6 +56,8 @@ public class SettingsActivity extends PreferenceActivity
             "automatic_home_clock";
     public static final String KEY_VOLUME_BUTTONS =
             "volume_button_setting";
+    public static final String KEY_NOTIFICATION_NEVER_ONGOING =
+            "notification_never_ongoing";
 
     public static final String DEFAULT_VOLUME_BEHAVIOR = "0";
     public static final String VOLUME_BEHAVIOR_SNOOZE = "1";

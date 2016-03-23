@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- Notification settings -->
+    <string name="notifications_title">Notifications</string>
+
+    <!-- Setting: never make notifications ongoing -->
+    <string name="notification_never_ongoing_title">Never ongoing notifications</string>
+    <string name="notification_never_ongoing_summary">Always allow notifications to get dismissed</string>
+
+</resources>
